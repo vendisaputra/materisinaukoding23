@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "customers")
 @Getter
 @Setter
-public class Customer {
+public class Customer extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
@@ -34,10 +34,8 @@ public class Customer {
     private String city;
 
     @Column
-    private String zipCode;
+    private String state;
 
     @Column
-    private Integer age;
-
-
+    private String zipCode;
 }

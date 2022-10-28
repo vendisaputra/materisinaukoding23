@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "9448d73c-a8e3-4e44-8b6f-ef53ed5f8879",
+		"name": "SINAU KODING 23",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "8500787"
+	},
+	"item": [
+		{
+			"name": "CUSTOMER",
+			"item": [
+				{
+					"name": "GET DATA",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8083/customers/find-all"
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE DATA",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Antonio\",\r\n    \"lastName\": \"Sanjaya\",\r\n    \"phone\": \"087166353535\",\r\n    \"email\": \"antoniosanjaya@gmail.com\",\r\n    \"street\": null,\r\n    \"city\": \"Sleman\",\r\n    \"state\": null,\r\n    \"zipCode\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8083/customers/add"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE DATA",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": 1,\r\n    \"firstName\": \"Tono\",\r\n    \"lastName\": \"Setiawan\",\r\n    \"phone\": \"0812213123\",\r\n    \"email\": \"tono@gmail.com\",\r\n    \"street\": null,\r\n    \"city\": \"Bogor\",\r\n    \"state\": null,\r\n    \"zipCode\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/customers/update?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"customers",
+								"update"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE DATA",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8083/customers/delete/1"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
