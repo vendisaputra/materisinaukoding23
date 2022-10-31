@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @Setter
-public class Response {
+public class RestResult {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object data;
@@ -19,20 +19,20 @@ public class Response {
 
     private HttpStatus status;
 
-    public Response(Object data, String message, int total, HttpStatus status) {
+    public RestResult(Object data, String message, int total, HttpStatus status) {
         this.data = data;
         this.message = message;
         this.total = total;
         this.status = status;
     }
 
-    public Response(Object data, String message, HttpStatus status) {
+    public RestResult(Object data, String message, HttpStatus status) {
         this.data = data;
         this.message = message;
         this.status = status;
     }
 
-    public Response(String message, HttpStatus status) {
+    public RestResult(String message, HttpStatus status) {
         this.message = message;
         this.status = status;
     }
