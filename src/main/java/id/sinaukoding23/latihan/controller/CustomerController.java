@@ -32,7 +32,7 @@ public class CustomerController {
     @PutMapping("/update")
     public ResponseEntity<?> updateData(@RequestBody CustomerDTO param,
                                         @RequestParam(name = "id") int id){
-        CustomerDTO data = service.updateData(null, id);
+        CustomerDTO data = service.updateData(param, id);
 
         if (data != null){
             return new ResponseEntity<>(data, HttpStatus.OK);
