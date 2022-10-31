@@ -1,7 +1,6 @@
 package id.sinaukoding23.latihan.service;
 
 import id.sinaukoding23.latihan.model.Customer;
-import id.sinaukoding23.latihan.model.dto.CustomeCustomerDTO;
 import id.sinaukoding23.latihan.model.dto.CustomerDTO;
 import id.sinaukoding23.latihan.model.mapper.CustomerMapper;
 import id.sinaukoding23.latihan.repository.CustomerRepository;
@@ -19,12 +18,10 @@ public class CustomerService {
     private CustomerRepository repository;
 
     @Transactional(readOnly = true)
-    public List<CustomeCustomerDTO> findAll(){
+    public List<CustomerDTO> findAll(){
         List<Customer> data = repository.findAllByIsDeleted(false);
 
-        List<CustomerDTO> res = CustomerMapper.INSTANCE.toDtoList(data);
-
-        return CustomerMapper.INSTANCE.toCustomCustomer(res);
+        return CustomerMapper.INSTANCE.toDtoList(data);
     }
 
     @Transactional
