@@ -1,6 +1,6 @@
 package id.sinaukoding23.latihan.controller;
 
-import id.sinaukoding23.latihan.model.Customer;
+import id.sinaukoding23.latihan.model.dto.CustomerDTO;
 import id.sinaukoding23.latihan.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,8 +19,8 @@ public class CustomerController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> createDate(@RequestBody Customer param){
-        Customer data = service.createData(param);
+    public ResponseEntity<?> createDate(@RequestBody CustomerDTO param){
+        CustomerDTO data = service.createData(param);
 
         if (data != null){
             return new ResponseEntity<>(data, HttpStatus.OK);
@@ -30,9 +30,9 @@ public class CustomerController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<?> updateData(@RequestBody Customer param,
+    public ResponseEntity<?> updateData(@RequestBody CustomerDTO param,
                                         @RequestParam(name = "id") int id){
-        Customer data = service.updateData(param, id);
+        CustomerDTO data = service.updateData(null, id);
 
         if (data != null){
             return new ResponseEntity<>(data, HttpStatus.OK);
