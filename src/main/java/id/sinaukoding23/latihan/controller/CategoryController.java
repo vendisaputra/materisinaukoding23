@@ -1,8 +1,8 @@
 package id.sinaukoding23.latihan.controller;
 
 import id.sinaukoding23.latihan.common.RestResult;
-import id.sinaukoding23.latihan.model.dto.ProductDTO;
-import id.sinaukoding23.latihan.service.ProductService;
+import id.sinaukoding23.latihan.model.dto.CategoryDTO;
+import id.sinaukoding23.latihan.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
-public class ProductController {
+@RequestMapping("/categories")
+public class CategoryController {
     @Autowired
-    private ProductService service;
+    private CategoryService service;
 
     @GetMapping("/find-all")
     public RestResult getAllData(){
-        List<ProductDTO> data = service.findAll();
+        List<CategoryDTO> data = service.findAll();
 
         return new RestResult(data, data.size() == 0 ? "Data tidak ditemukan" : "Menampilkan data", data.size(), HttpStatus.OK);
     }
 
     @PostMapping("/add")
-    public RestResult createDate(@RequestBody ProductDTO param){
-        ProductDTO data = service.createData(param);
+    public RestResult createDate(@RequestBody CategoryDTO param){
+        CategoryDTO data = service.createData(param);
 
         if (data != null){
             return new RestResult(data, "Data Berhasil disimpan", HttpStatus.OK);
@@ -34,9 +34,9 @@ public class ProductController {
     }
 
     @PutMapping("/update")
-    public RestResult updateData(@RequestBody ProductDTO param,
+    public RestResult updateData(@RequestBody CategoryDTO param,
                                  @RequestParam(name = "id") int id){
-        ProductDTO data = service.updateData(param, id);
+        CategoryDTO data = service.updateData(param, id);
 
         if (data != null){
             return new RestResult(data, "Data Berhasil diupdate", HttpStatus.OK);
