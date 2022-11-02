@@ -39,6 +39,6 @@ public class Store extends BaseEntity{
     @OneToMany(mappedBy = "store")
     private List<Stocks> stockList;
 
-//    @ManyToMany(mappedBy = "storeList")
-//    private List<Product> productList;
+    @OneToMany(mappedBy = "store")
+    private List<Staff> staffList;
 }
