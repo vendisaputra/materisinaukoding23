@@ -41,5 +41,8 @@ public class Staff extends BaseEntity{
     @OneToMany(mappedBy = "manager")
     private List<Staff> staffList;
 
+    @OneToMany(mappedBy = "staff")
+    private List<Order> orderList;
+
 
 }

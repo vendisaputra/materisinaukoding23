@@ -30,4 +30,15 @@ public class StocksService {
 
         return StockMapper.INSTANCE.entityToDto(data);
     }
+
+    @Transactional
+    public void updateStock(Integer productId, Integer quantity){
+        Stocks data = repository.findByProduct_ProductId(productId);
+
+        if (data != null){
+            data.setQuantity(data.getQuantity() - quantity);
+
+            repository.save(data);
+        }
+    }
 }

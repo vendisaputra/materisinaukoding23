@@ -25,4 +25,5 @@ public class Stocks {
 
     @Column
     private Integer quantity;
+
 }

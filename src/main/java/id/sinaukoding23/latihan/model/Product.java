@@ -36,9 +36,7 @@ public class Product extends BaseEntity{
     @OneToMany(mappedBy = "product")
     private List<Stocks> stockList;
 
-//    @ManyToMany
-//    @JoinTable(name = "product_store", joinColumns = @JoinColumn(name = "product_id"),
-//    inverseJoinColumns = @JoinColumn(name = "store_id"))
-//    private List<Store> storeList;
+    @OneToMany(mappedBy = "product")
+    private List<OrderItem> orderItems;
 
 }

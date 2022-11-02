@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -38,4 +39,7 @@ public class Customer extends BaseEntity{
 
     @Column
     private String zipCode;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orderList;
 }
