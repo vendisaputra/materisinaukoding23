@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Table(name = "products")
 @Entity
@@ -31,5 +32,13 @@ public class Product extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "brand_id")
     private Brand brand;
+
+    @OneToMany(mappedBy = "product")
+    private List<Stocks> stockList;
+
+//    @ManyToMany
+//    @JoinTable(name = "product_store", joinColumns = @JoinColumn(name = "product_id"),
+//    inverseJoinColumns = @JoinColumn(name = "store_id"))
+//    private List<Store> storeList;
 
 }

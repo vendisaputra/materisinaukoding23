@@ -1,0 +1,33 @@
+package id.sinaukoding23.latihan.service;
+
+import id.sinaukoding23.latihan.model.Stocks;
+import id.sinaukoding23.latihan.model.dto.StockDTO;
+import id.sinaukoding23.latihan.model.mapper.StockMapper;
+import id.sinaukoding23.latihan.repository.StocksRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
+import java.util.List;
+
+@Service
+public class StocksService {
+    @Autowired
+    private StocksRepository repository;
+
+    @Transactional(readOnly = true)
+    public List<StockDTO> findAll(){
+        List<Stocks> data = repository.findAll();
+
+        return StockMapper.INSTANCE.toDtoList(data);
+    }
+
+    @Transactional
+    public StockDTO createData(StockDTO param){
+        Stocks data = StockMapper.INSTANCE.dtoToEntity(param);
+        data = repository.save(data);
+
+        return StockMapper.INSTANCE.entityToDto(data);
+    }
+}
