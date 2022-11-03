@@ -19,12 +19,12 @@ public class JwtTokenUtil {
     @Value("${jwt.secret}")
     private String secret;
 
-    public String doGenerateToken(UserDetails userDetails){
+    public String doGenerateToken(String username){
         Map<String, Object> claims = new HashMap<>();
 
-        return Jwts.builder().setClaims(claims).setSubject(userDetails.getUsername())
+        return Jwts.builder().setClaims(claims).setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 100))
+                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
                 .signWith(SignatureAlgorithm.HS512, secret).compact();
     }
 

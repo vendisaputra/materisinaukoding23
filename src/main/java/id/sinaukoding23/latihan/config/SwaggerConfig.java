@@ -42,7 +42,7 @@ public class SwaggerConfig {
     }
 
     private SecurityScheme securityScheme(){
-        return new ApiKey("Token", "Authorization", "header");
+        return new ApiKey("Api Token", "Authorization", "header");
     }
 
     private SecurityContext securityContext(){

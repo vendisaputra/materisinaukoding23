@@ -39,9 +39,7 @@ public class UserService {
 
         if (currentUser != null){
             if (currentUser.isActive() && currentUser.getPassword() != null && BCrypt.checkpw(param.getPassword(), currentUser.getPassword())){
-                UserDetails userDetails = new org.springframework.security.core.userdetails.User(currentUser.getUsername(), currentUser.getPassword(), new ArrayList<>());
-
-                res.setToken(jwtTokenUtil.doGenerateToken(userDetails));
+                res.setToken(jwtTokenUtil.doGenerateToken(currentUser.getUsername()));
 
                 return res;
             }
